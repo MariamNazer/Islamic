@@ -25,5 +25,10 @@ class AppTheme {
         backgroundColor: lightPrimary,
         selectedItemColor: black,
         unselectedItemColor: white,
-      ));
+      ),
+      textTheme: TextTheme(
+          headlineSmall: TextStyle(
+              fontSize: 25, fontWeight: FontWeight.w400, color: black),
+          headlineLarge: TextStyle(
+              fontSize: 20, fontWeight: FontWeight.w400, color: black)));
 }

@@ -16,21 +16,21 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   List<Widget> tabs = [
-    RadioTab(),
-    SebhaTab(),
-    HadethTab(),
-    QuranTab(),
+    const RadioTab(),
+    const SebhaTab(),
+    const HadethTab(),
+     QuranTab(),
   ];
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/defult_background.png'),
               fit: BoxFit.fill)),
       child: Scaffold(
           appBar: AppBar(
-            title: Text('اسلامي'),
+            title: const Text('إسلامي'),
           ),
           body: tabs[currentIndex],
           bottomNavigationBar: BottomNavigationBar(

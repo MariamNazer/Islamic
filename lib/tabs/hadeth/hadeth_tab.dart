@@ -7,7 +7,7 @@ class HadethTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       
-      child: Text(
+      child: const Text(
         'data',
         style: TextStyle(color: Colors.black),
       ),
