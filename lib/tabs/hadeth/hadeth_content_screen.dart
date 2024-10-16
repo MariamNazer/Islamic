@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:islamic/tabs/hadeth/hadeth.dart';
 import 'package:islamic/tabs/quran/quran_tab.dart';
 import 'package:islamic/widgets/load_indicator.dart';
 
-class SouraContentScreen extends StatefulWidget {
-  static const String routName = '/soura-content';
+class HadethContentScreen extends StatefulWidget {
+  static const String routName = '/hadeth_content';
 
-  const SouraContentScreen({super.key});
+  const HadethContentScreen({super.key});
 
   @override
-  State<SouraContentScreen> createState() => _SouraContentScreenState();
+  State<HadethContentScreen> createState() => _SouraContentScreenState();
 }
 
-class _SouraContentScreenState extends State<SouraContentScreen> {
-  List<String> ayat = [];
+class _SouraContentScreenState extends State<HadethContentScreen> {
+  List<String> ahadeth = [];
 
   late SouraContentArgs args;
   @override
@@ -21,10 +22,7 @@ class _SouraContentScreenState extends State<SouraContentScreen> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
 
-    args = ModalRoute.of(context)!.settings.arguments as SouraContentArgs;
-    if (ayat.isEmpty) {
-      loadSuraFile();
-    }
+    Hadeth hadeth = ModalRoute.of(context)!.settings.arguments as Hadeth;
     return Container(
         decoration: const BoxDecoration(
             image: DecorationImage(
@@ -32,7 +30,7 @@ class _SouraContentScreenState extends State<SouraContentScreen> {
                 fit: BoxFit.fill)),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(args.suraName),
+            title: Text(hadeth.title),
           ),
           body: Container(
             margin: EdgeInsets.symmetric(
@@ -41,25 +39,15 @@ class _SouraContentScreenState extends State<SouraContentScreen> {
                 EdgeInsets.symmetric(vertical: height * 0.08, horizontal: 30),
             decoration: BoxDecoration(
                 color: Colors.white, borderRadius: BorderRadius.circular(25)),
-            child: ayat.isEmpty
-                ? const LoadIndicator()
-                : ListView.builder(
+            child:ListView.builder(
                     itemBuilder: (_, index) => Text(
-                      ayat[index],
+                      hadeth.content[index],
                       style: Theme.of(context).textTheme.titleLarge,
                       textAlign: TextAlign.center,
                     ),
-                    itemCount: ayat.length,
+                    itemCount: hadeth.content.length,
                   ),
           ),
         ));
-  }
-
-  void loadSuraFile() async {
-    await Future.delayed(const Duration(seconds: 1));
-    String soura =
-        await rootBundle.loadString('assets/text/${args.index + 1}.txt');
-    ayat = soura.split('\r\n');
-    setState(() {});
   }
 }
