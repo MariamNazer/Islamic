@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:islamic/tabs/hadeth/hadeth.dart';
 import 'package:islamic/tabs/quran/quran_tab.dart';
-import 'package:islamic/widgets/load_indicator.dart';
 
 class HadethContentScreen extends StatefulWidget {
   static const String routName = '/hadeth_content';

@@ -21,7 +21,7 @@ class AppTheme {
           )),
       scaffoldBackgroundColor: Colors.transparent,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.shifting,
         backgroundColor: lightPrimary,
         selectedItemColor: black,
         unselectedItemColor: white,
