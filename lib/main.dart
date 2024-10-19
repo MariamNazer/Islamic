@@ -3,9 +3,12 @@ import 'package:islamic/app_theme.dart';
 import 'package:islamic/home_screen.dart';
 import 'package:islamic/tabs/hadeth/hadeth_content_screen.dart';
 import 'package:islamic/tabs/quran/soura_content_screen.dart';
+import 'package:islamic/tabs/settings/settings_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const IslamiApp());
+  runApp(ChangeNotifierProvider(
+      create: (_) => SettingsProvider(), child: const IslamiApp()));
 }
 
 class IslamiApp extends StatelessWidget {
@@ -13,16 +16,20 @@ class IslamiApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //دا عشان اعمل access عال provider الاساسي
+    //كتبت دي <SettingsProvider> عشان لو عندي اكتر من provider فحددتله انو واحد عاوز اتعامل معاه
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {HomeScreen.routename: (context) => const HomeScreen(),
-      SouraContentScreen.routName: (context) =>  const SouraContentScreen(),
-      HadethContentScreen.routName: (context) => const HadethContentScreen(),
+      routes: {
+        HomeScreen.routename: (context) => const HomeScreen(),
+        SouraContentScreen.routName: (context) => const SouraContentScreen(),
+        HadethContentScreen.routName: (context) => const HadethContentScreen(),
       },
       initialRoute: HomeScreen.routename,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.light,
+      themeMode: settingsProvider.themeMode,
     );
   }
 }
