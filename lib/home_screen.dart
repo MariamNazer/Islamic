@@ -7,6 +7,7 @@ import 'package:islamic/tabs/sabha/sebha_tab.dart';
 import 'package:islamic/tabs/settings/settinge_tab.dart';
 import 'package:islamic/tabs/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routename = '/home';
@@ -27,16 +28,16 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    SettingsProvider settingsProvider =
-        Provider.of<SettingsProvider>(context);
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return Container(
       decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/images/${settingsProvider.backgroundImageName}.png'),
+              image: AssetImage(
+                  'assets/images/${settingsProvider.backgroundImageName}.png'),
               fit: BoxFit.fill)),
       child: Scaffold(
           appBar: AppBar(
-            title: const Text('إسلامي'),
+            title: Text(AppLocalizations.of(context)!.islami),
           ),
           body: tabs[currentIndex],
           bottomNavigationBar: BottomNavigationBar(
@@ -50,30 +51,30 @@ class _HomeScreenState extends State<HomeScreen> {
             items: [
               BottomNavigationBarItem(
                 icon: const ImageIcon(AssetImage("assets/images/quran.png")),
-                label: "القرآن",
+                label: AppLocalizations.of(context)!.quran,
                 backgroundColor: AppTheme.lightPrimary,
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(AssetImage("assets/images/hadith.png")),
-                label: "الأحاديث",
+                label: AppLocalizations.of(context)!.hadeth,
                 backgroundColor: Theme.of(context).primaryColor,
               ),
               BottomNavigationBarItem(
                 icon:
                     const ImageIcon(AssetImage("assets/images/sebha_blue.png")),
-                label: "التسبيح",
+                label: AppLocalizations.of(context)!.sebaha,
                 backgroundColor: Theme.of(context).primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(
                   AssetImage("assets/images/radio.png"),
                 ),
-                label: "الراديو",
+                label: AppLocalizations.of(context)!.radio,
                 backgroundColor: Theme.of(context).primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.settings_outlined),
-                label: "الاعدادات",
+                label: AppLocalizations.of(context)!.settings,
                 backgroundColor: Theme.of(context).primaryColor,
               ),
             ],

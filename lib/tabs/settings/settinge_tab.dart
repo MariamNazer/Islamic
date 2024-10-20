@@ -3,6 +3,7 @@ import 'package:islamic/app_theme.dart';
 import 'package:islamic/tabs/settings/language.dart';
 import 'package:islamic/tabs/settings/settings_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SettingeTab extends StatelessWidget {
   List<Language> languages = [
@@ -20,7 +21,7 @@ class SettingeTab extends StatelessWidget {
       child: Column(
         children: [
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text('Dark Mode',
+            Text(AppLocalizations.of(context)!.darkMode,
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge
@@ -38,7 +39,7 @@ class SettingeTab extends StatelessWidget {
             height: 8,
           ),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Text('Dark Mode',
+            Text(AppLocalizations.of(context)!.language,
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge
