@@ -15,9 +15,10 @@ class IslamiApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {HomeScreen.routename: (context) => const HomeScreen(),
-      SouraContentScreen.routName: (context) =>  const SouraContentScreen(),
-      HadethContentScreen.routName: (context) => const HadethContentScreen(),
+      routes: {
+        HomeScreen.routename: (context) => const HomeScreen(),
+        SouraContentScreen.routName: (context) => const SouraContentScreen(),
+        HadethContentScreen.routName: (context) => const HadethContentScreen(),
       },
       initialRoute: HomeScreen.routename,
       theme: AppTheme.lightTheme,
