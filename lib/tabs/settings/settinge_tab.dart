@@ -10,8 +10,10 @@ class SettingeTab extends StatelessWidget {
     Language(code: 'en', name: 'English'),
     Language(code: 'an', name: 'العربية')
   ];
+  static String lang = '';
 
   SettingeTab({super.key});
+
   @override
   Widget build(BuildContext context) {
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);

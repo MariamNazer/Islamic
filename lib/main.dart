@@ -21,19 +21,19 @@ class IslamiApp extends StatelessWidget {
     //كتبت دي <SettingsProvider> عشان لو عندي اكتر من provider فحددتله انو واحد عاوز اتعامل معاه
     SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        routes: {
-          HomeScreen.routename: (context) => const HomeScreen(),
-          SouraContentScreen.routName: (context) => const SouraContentScreen(),
-          HadethContentScreen.routName: (context) =>
-              const HadethContentScreen(),
-        },
-        initialRoute: HomeScreen.routename,
-        theme: AppTheme.lightTheme,
-        darkTheme: AppTheme.darkTheme,
-        themeMode: settingsProvider.themeMode,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: Locale(settingsProvider.languageCode));
+      debugShowCheckedModeBanner: false,
+      routes: {
+        HomeScreen.routename: (context) => const HomeScreen(),
+        SouraContentScreen.routName: (context) => const SouraContentScreen(),
+        HadethContentScreen.routName: (context) => const HadethContentScreen(),
+      },
+      initialRoute: HomeScreen.routename,
+      theme: AppTheme.lightTheme,
+      darkTheme: AppTheme.darkTheme,
+      themeMode: settingsProvider.themeMode,
+      locale: Locale(settingsProvider.languageCode),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: AppLocalizations.supportedLocales,
+    );
   }
 }

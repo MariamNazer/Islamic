@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islamic/app_theme.dart';
+import 'package:provider/provider.dart';
+import 'package:islamic/tabs/settings/settings_provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SebhaTab extends StatefulWidget {
   const SebhaTab({super.key});
@@ -38,6 +41,7 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    SettingsProvider settingsProvider = Provider.of<SettingsProvider>(context);
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return SingleChildScrollView(
@@ -49,9 +53,12 @@ class _SebhaTabState extends State<SebhaTab> {
                 Transform.translate(
                   offset: const Offset(10, 4),
                   child: Image.asset(
-                    'assets/images/headofseb7a.png',
-                    height: height * 0.13,
-                  ),
+                      settingsProvider.isDark
+                          ? 'assets/images/darkheadofseb7a.png'
+                          : 'assets/images/headofseb7a.png',
+                      height: settingsProvider.isDark
+                          ? height * 0.11
+                          : height * 0.13),
                 ),
                 Transform.translate(
                   offset: Offset(0, -height * 0.089),
@@ -60,10 +67,15 @@ class _SebhaTabState extends State<SebhaTab> {
                     child: Transform.rotate(
                       angle: angle,
                       child: Image.asset(
-                        'assets/images/bodyofseb7a.png',
-                        width: width * 0.7,
-                        height: height * 0.4,
-                      ),
+                          settingsProvider.isDark
+                              ? 'assets/images/darkbodyofseb7a.png'
+                              : 'assets/images/bodyofseb7a.png',
+                          width: settingsProvider.isDark
+                              ? width * 0.5
+                              : width * 0.7,
+                          height: settingsProvider.isDark
+                              ? height * 0.4
+                              : height * 0.4),
                     ),
                   ),
                 ),
@@ -72,8 +84,11 @@ class _SebhaTabState extends State<SebhaTab> {
             Transform.translate(
                 offset: Offset(0, -height * 0.1),
                 child: Text(
-                  'عدد التسبيحات',
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  AppLocalizations.of(context)!.numberOfPraises,
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                      color: settingsProvider.isDark
+                          ? AppTheme.white
+                          : AppTheme.black),
                 )),
             SizedBox(
               height: height * 0.04,
@@ -92,7 +107,9 @@ class _SebhaTabState extends State<SebhaTab> {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(25),
-                  color: const Color(0XFFB7935F).withOpacity(0.57),
+                  color: settingsProvider.isDark
+                      ? AppTheme.darkPrimary
+                      : Color(0XFFB7935F).withOpacity(0.57),
                 ),
               ),
             ),
@@ -105,13 +122,18 @@ class _SebhaTabState extends State<SebhaTab> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
                 decoration: BoxDecoration(
-                    color: AppTheme.lightPrimary,
+                    color: settingsProvider.isDark
+                        ? AppTheme.gold
+                        : AppTheme.lightPrimary,
                     borderRadius: BorderRadius.circular(25)),
                 child: Text(sebhaText,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w100,
-                        color: Colors.white)),
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.w100,
+                      color: settingsProvider.isDark
+                          ? Color(0xFF0F1424)
+                          : AppTheme.white,
+                    )),
               ),
             )
           ])),

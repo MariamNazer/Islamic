@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:islamic/app_theme.dart';
 import 'package:islamic/tabs/hadeth/hadeth_tab.dart';
 import 'package:islamic/tabs/quran/quran_tab.dart';
 import 'package:islamic/tabs/radio/radio_tab.dart';
@@ -52,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
               BottomNavigationBarItem(
                 icon: const ImageIcon(AssetImage("assets/images/quran.png")),
                 label: AppLocalizations.of(context)!.quran,
-                backgroundColor: AppTheme.lightPrimary,
+                backgroundColor: Theme.of(context).primaryColor,
               ),
               BottomNavigationBarItem(
                 icon: const ImageIcon(AssetImage("assets/images/hadith.png")),

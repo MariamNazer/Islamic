@@ -2,10 +2,11 @@
   "islami": "Islami",
   "quran":"Quran",
   "hadeth":"Hadeth",
-  "sebaha":"Sebaha",
+  "sebaha":"Sebha",
   "radio":"Radio",
   "settings":"Settings",
   "numberOfPraises":"Number of praises",
   "darkMode":"Dark Mode",
-  "language":"Language"
+  "language":"Language",
+  "quranRadio":"Revealing the Holy Quran"
 }
